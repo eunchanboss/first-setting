@@ -1,0 +1,3 @@
+export const LOAD_ME_REQUEST = 'LOAD_ME_REQUEST';
+export const LOAD_ME_SUCCESS = 'LOAD_ME_SUCCESS';
+export const LOAD_ME_FAILURE = 'LOAD_ME_FAILURE';
