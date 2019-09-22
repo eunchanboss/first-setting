@@ -8,9 +8,11 @@ export const setToken = (token) => {
 };
 
 export const unsetToken = () => {
-  cookie.remove('token');
+  if (cookie.get('isChecked') !== 'true') {
+    cookie.remove('token');
+  }
   // to support logging out from all windows
-  window.localStorage.setItem('logout', Date.now());
+  //window.localStorage.setItem('logout', Date.now());
 };
 
 export const getToken = () => cookie.get('token');
@@ -23,11 +25,19 @@ export const auth = (ctx) => {
    * rendered on server. If we are on server and token is not available,
    * means user is not logged in.
    */
+
   if (ctx.req && !token) {
-    if (ctx.req.url !== '/login') {
-      ctx.res.writeHead(302, { Location: 'https://dev.storyjam.co.kr:9030/login' });
-      ctx.res.end();
-    }
+    console.log(ctx.req.url);
+    // if (ctx.req.url === '/signup/add-info') {
+    //     ctx.res.writeHead(302, { Location: '/signup' });
+    //     ctx.res.end();
+    // }
+    // if (ctx.req.url !== '/login') {
+    //   ctx.res.writeHead(302, { Location: '/login' });
+    //   ctx.res.end();
+    // }
+
+
     return undefined;
   }
 

@@ -3,7 +3,7 @@ const next = require('next');
 const morgan = require('morgan');
 const path = require('path');
 
-const port = parseInt(process.env.PORT, 10) || 13080;
+const port = parseInt(process.env.PORT, 10) || 13090;
 const dev = process.env.NODE_ENV !== 'production';
 // const prod = process.env.NODE_ENV === 'production';
 
@@ -20,6 +20,7 @@ app.prepare().then(() => {
 
   server.get('/member/:id', (req, res) => app.render(req, res, '/member/member', { id: req.params.id }));
 
+  server.get('/signup/email/:policyAgreeYn:marketingAgreeYn:age14AgreeYn', (req, res) => app.render(req, res, '/signup/email', { policyAgreeYn: req.params.policyAgreeYn, marketingAgreeYn: req.params.marketingAgreeYn, age14AgreeYn: req.params.age14AgreeYn }));
 
   server.get('*', (req, res) => handle(req, res));
 
