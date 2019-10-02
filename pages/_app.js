@@ -77,13 +77,13 @@ StoryJam.getInitialProps = async (context) => {
     axios.defaults.headers.authorization = token;
   }
 
-  const state = ctx.store.getState();
-  if (token && !state.login.isLoggedIn) {
-    ctx.store.dispatch({
-      type: LOAD_ME_REQUEST,
-      data: token,
-    });
-  }
+  // const state = ctx.store.getState();
+  // if (token && !state.login.isLoggedIn) {
+  //   ctx.store.dispatch({
+  //     type: LOAD_ME_REQUEST,
+  //     data: token,
+  //   });
+  // }
 
   let pageProps = {};
   if (Component.getInitialProps) {
